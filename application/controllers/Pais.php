@@ -21,10 +21,33 @@ class Pais extends REST_Controller {
 
        $respuesta = array(
            'error' => FALSE,
-           'pais' => $query->result_array()
+           'equipo' => $query->result_array()
     );
 
 
     $this->response( $respuesta );
+   }
+
+   public function todos_get( $pagina = 0 ){
+
+    $pagina = $pagina * 10;
+
+    $query = $this->db->query(' SELECT * FROM equipo limit '. $pagina .',10 ');
+
+       $respuesta = array(
+           'error' => FALSE,
+           'equipo' => $query->result_array()
+    );
+
+
+    $this->response( $respuesta );
+   }
+
+   public function por_grupo_get( $tipo=0, $pagina=0 ){
+
+   }
+
+   public function buscar_get( $termino ){
+
    }
 }
