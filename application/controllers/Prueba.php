@@ -1,14 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Prueba extends CI_Controller {
+require_once( APPPATH.'/libraries/REST_Controller.php' );
+//use Restserver\libraries\REST_Controller;
+
+class Prueba extends REST_Controller {
     public function index(){
         echo "Hola mundo";
     }
 
-    public function obtener_arreglo($index){
+    public function obtener_arreglo_get($index){
         $arreglo = array( "manzana", "pera", "piña" );
 
-        echo json_encode( $arreglo[$index] );
+        $this->response( $arreglo[$index] );
     }
 }
